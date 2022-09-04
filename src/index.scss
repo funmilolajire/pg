@@ -84,6 +84,10 @@ main {
             outline: 1px solid transparent;
         }
 
+        &:disabled {
+            color: $almost-white;
+        }
+
         &::-webkit-input-placeholder {
             opacity: 0.25;
         }
