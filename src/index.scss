@@ -1,0 +1,426 @@
+@use './assets/scss/config'as *;
+
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('./assets/fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype'),
+        url('./assets/fonts/JetBrainsMono-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    @extend %body;
+    width: 100vw;
+    height: 100vh;
+    background: #08070B;
+    color: $almost-white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font: {
+        family: $primary-font;
+        weight: 700;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+}
+
+header {
+    h1 {
+        @extend %heading-m;
+        text-align: center;
+        color: $grey;
+    }
+}
+
+main {
+    width: 54rem;
+}
+
+.display-box {
+    height: 8rem;
+    margin: 3.2rem 0 2.4rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: $dark-grey;
+    position: relative;
+
+    .display-text {
+        @extend %heading-l;
+        font-weight: 700;
+        padding: 1.9rem 2.8rem;
+        font-family: inherit;
+        background: inherit;
+        border: 0;
+        height: 100%;
+        width: 100%;
+        caret-color: $almost-white;
+        color: $almost-white;
+
+        &:focus,
+        &:focus-visible,
+        &:focus-within {
+            outline: 1px solid transparent;
+        }
+
+        &::-webkit-input-placeholder {
+            opacity: 0.25;
+        }
+
+        &::-moz-placeholder {
+            opacity: 0.25;
+        }
+
+        &:-ms-input-placeholder {
+            opacity: 0.25;
+        }
+
+
+        &::-ms-input-placeholder {
+            opacity: 0.25;
+        }
+
+
+        &::placeholder {
+            opacity: 0.25;
+        }
+    }
+
+    figure {
+        position: absolute;
+        right: 3.2rem;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 1.6rem;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        cursor: pointer;
+
+        figcaption {
+            color: $neon-green;
+            font-size: 1.8rem;
+            line-height: 2.4rem;
+            text-transform: uppercase;
+        }
+
+        svg {
+            fill: $neon-green;
+        }
+
+        &:hover {
+            svg {
+                fill: #fff;
+            }
+        }
+    }
+
+}
+
+.generator {
+    background: $dark-grey;
+    padding: 2.4rem 3.2rem 3.2rem;
+}
+
+.character-length {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    .number {
+        @extend %heading-l;
+        color: $neon-green;
+    }
+}
+
+.slider {
+    margin-top: 1.6rem;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .slider-track {
+        content: '';
+        height: 8px;
+        position: absolute;
+        left: 0;
+        background: $neon-green;
+    }
+
+    input[type="range"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: $very-dark-grey;
+        height: 8px;
+        cursor: pointer;
+        width: 100%;
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 50%;
+            width: 2.8rem;
+            height: 2.8rem;
+            background: $almost-white;
+            position: relative;
+            -webkit-transition: 0.3s ease-out all;
+            transition: 0.3s ease-out all;
+
+            &:hover {
+                border: 2px solid $neon-green;
+                background: $very-dark-grey;
+                transition: 0.3s ease-out all;
+            }
+        }
+    }
+}
+
+.config {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3.2rem;
+
+    .config-item {
+        display: flex;
+        align-items: center;
+        gap: 2.4rem;
+        cursor: pointer;
+
+        &:hover {
+            div {
+                border: 2px solid $neon-green;
+            }
+        }
+
+        div {
+            width: 2rem;
+            height: 2rem;
+            background: $dark-grey;
+            border: 2px solid $almost-white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            &.checked {
+                background: $neon-green;
+                border: none;
+            }
+        }
+    }
+}
+
+.password-strength {
+    margin-top: 3.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3.2rem;
+    background: $very-dark-grey;
+    height: 7.2rem;
+
+    p {
+        color: $grey;
+        text-transform: uppercase;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        gap: 1.55rem;
+    }
+
+    .strength-text {
+        @extend %heading-m;
+        text-transform: uppercase;
+        color: $almost-white;
+    }
+
+    .strength-boxes {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+
+        li {
+            list-style: none;
+            width: 1rem;
+            height: 2.8rem;
+            border: 2px solid $almost-white;
+            transition: 0.3s ease-in all;
+
+            &.too-weak {
+                background: $red;
+                border: 0;
+            }
+
+            &.weak {
+                background: $orange;
+                border: 0;
+            }
+
+            &.medium {
+                background: $yellow;
+                border: 0;
+            }
+
+            &.strong {
+                background: $neon-green;
+                border: 0;
+            }
+        }
+    }
+}
+
+button {
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    border: 0;
+    cursor: pointer;
+
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+        outline: 1px solid transparent;
+    }
+
+    &.generate {
+        margin-top: 3.2rem;
+        width: 100%;
+        height: 6.5rem;
+        background: $neon-green;
+        color: $dark-grey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2.4rem;
+        text-transform: uppercase;
+        transition: 0.3s ease-in all;
+
+        img {
+            transition: 0.3s ease-in all;
+        }
+
+        &:hover {
+            color: $neon-green;
+            background: transparent;
+            border: 2px solid $neon-green;
+            transition: 0.3s ease-in all;
+
+            img {
+                -webkit-filter: invert(82%) sepia(29%) saturate(476%) hue-rotate(73deg) brightness(106%) contrast(101%);
+                filter: invert(82%) sepia(29%) saturate(476%) hue-rotate(73deg) brightness(106%) contrast(101%);
+                transition: 0.3s ease-in all;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 580px) {
+    body {
+        padding: 1.6rem;
+    }
+
+    header {
+        h1 {
+            font-size: 1.6rem;
+            line-height: 2.1rem;
+        }
+    }
+
+    main {
+        width: 100%;
+    }
+
+    .display-box {
+        height: 6.4rem;
+        margin: 1.6rem 0;
+
+        .display-text {
+            padding: 1.6rem;
+            font-size: 2.4rem;
+            line-height: 3.2rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: normal;
+        }
+
+        figure {
+            right: 1.6rem;
+        }
+    }
+
+    .generator {
+        padding: 1.6rem;
+    }
+
+    .character-length {
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+
+        .number {
+            font-size: 2.4rem;
+            line-height: 3.2rem;
+        }
+    }
+
+    .slider {
+        margin-top: 0.8rem;
+    }
+
+    .config {
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+        gap: 1.6rem;
+
+        .config-item {
+            gap: 2rem;
+        }
+    }
+
+    .password-strength {
+        height: 5.6rem;
+        padding: 0 1.6rem;
+
+        .strength-text {
+            font-size: 1.6rem;
+            line-height: 2.1rem;
+        }
+    }
+
+    button {
+        &.generate {
+            margin-top: 1.6rem;
+            font-size: 1.6rem;
+            line-height: 2.1rem;
+            gap: 1.6rem;
+            height: 5.6rem;
+        }
+    }
+}
