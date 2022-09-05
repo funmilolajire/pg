@@ -4,10 +4,16 @@ export const passwordStrength = (length: number, config: ConfigItem[]):PasswordS
     if (length >= 12 && config.includes('lowercase')&&config.includes('uppercase')&&config.includes('numbers')&&config.includes('symbols')) {
         return 'strong'
     }
-    if (length >= 8 && config.includes('lowercase')&&config.includes('uppercase')&&config.includes('numbers')) {
+    if (length >= 8 &&
+        (config.includes('lowercase') && config.includes('uppercase') && (config.includes('numbers') || config.includes('symbols'))) ||
+        ((config.includes('lowercase') || config.includes('uppercase')) && config.includes('numbers') && config.includes('symbols'))
+        ) {
         return 'medium'
     }
-    if (length >= 4 && config.includes('lowercase')&&config.includes('uppercase')) {
+    if (length >= 4 &&
+        (config.includes('lowercase') && (config.includes('numbers') || config.includes('symbols'))) ||
+        (config.includes('uppercase') && (config.includes('numbers') || config.includes('symbols'))))
+    {
         return 'weak'
     }
     return 'too-weak'
